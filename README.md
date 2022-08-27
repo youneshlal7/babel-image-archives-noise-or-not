@@ -15,7 +15,10 @@ after that install the requirements to run the script
 ```
 pip install -r requirements.txt
 ```
-
+run the script ndirscreator.py to create the necessary folders: imgholder, noise and not noise which are necessary to run the program
+```
+python ndirscreator.py
+```
 and now you're good to run the main.py which will only run one instance of the program by using this command
 ```
 python main.py
