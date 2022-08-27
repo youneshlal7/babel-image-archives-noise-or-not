@@ -1,0 +1,3 @@
+numpy==1.23.2
+opencv_python==4.6.0.66
+selenium==4.4.3
