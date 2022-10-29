@@ -27,4 +27,4 @@ if you want to multithread run multiple.py but only if you're pc or laptop can h
 ```
 python multiple.py
 ```
-The final thing is if you don't have the chromedriver on your computer please download it from: https://chromedriver.chromium.org/ which matches your version of chrome your currently running on your computer, and change the path of chromedriver in main.py line 101 of the script and if you done all of these steps successfully, you will see the script running normally on your screen.
+If you done all of these steps successfully, you will see the script running normally on your screen.
