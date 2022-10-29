@@ -2,6 +2,8 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver import ActionChains
 from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.common.keys import Keys
 import base64
 from math import log10, sqrt
 import cv2
@@ -10,7 +12,7 @@ from collections import Counter
 from multiprocessing import Pool
 import shutil
 import time
-
+import os
 
 #this function injects the browser so it can retrieve the bytes of the image.
 def get_file_content_chrome(driver, uri):
@@ -95,10 +97,10 @@ def calcEntropy2d(img, win_w=3, win_h=3, threadNum=6):
 if __name__ == '__main__':
 	#this option only let the browser run in a headless mode, so you can't see the chrome window.
 	options = Options()
-	options.add_argument('--headless')
+	#options.add_argument('--headless')
 
 	#this is the path for the chromedriver that controls chrome if you don't have, install it from https://chromedriver.chromium.org/ and replace the path.
-	chromep = Service(r"C:\Program Files (x86)\chromedriver.exe")
+	chromep = Service(ChromeDriverManager(cache_valid_range=7).install())
 	driver = webdriver.Chrome(service=chromep, options=options)
 
 	driver.get("https://babelia.libraryofbabel.info/slideshow.html")
@@ -118,6 +120,7 @@ if __name__ == '__main__':
 
 	#this is where the files get written to the imgholder folder where it holds the images until they're analysed.
 	bytes = get_file_content_chrome(driver, imgsrc)
+
 	img = open("imgholder\\"+imgloc+".jpg","wb")
 	img.write(bytes)
 	img.close()
@@ -176,6 +179,3 @@ if __name__ == '__main__':
 			else:
 				print("this isn't noise.")
 				shutil.move("imgholder\\"+imgloc+".jpg","not noise\\"+imgloc+".jpg")
-
-
-
